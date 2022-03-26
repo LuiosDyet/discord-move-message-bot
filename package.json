@@ -3,10 +3,9 @@
     "version": "1.0.0",
     "description": "",
     "main": "app.js",
-    "type": "module",
     "scripts": {
-        "start": "nodemon src/index.js",
-        "deploy": "node src/deploy-commands.js"
+        "start": "nodemon index.js",
+        "deploy": "node deploy-commands.js"
     },
     "keywords": [],
     "author": "",
