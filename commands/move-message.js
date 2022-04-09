@@ -57,19 +57,19 @@ module.exports = {
                         try {
                             setTimeout(async () => {
                                 await msg.delete();
-                            }, 4 * 60 * 1000);
+                            }, 60 * 1000);
                         } catch (error) {
                             console.error(error);
                         }
                     }
                 }
                 await interaction.reply({
-                    content: `<@${msg.author.id}> Tu mensaje fue copiado a ${threadName} y será borrado de este canal en 4 horas`,
+                    content: `<@${msg.author.id}> Tu mensaje fue movido a ${threadName}`,
                 });
                 try {
                     setTimeout(async () => {
                         await interaction.deleteReply();
-                    }, 4 * 60 * 1000);
+                    }, 24 * 60 * 60 * 1000);
                 } catch (error) {
                     console.error(error);
                 }

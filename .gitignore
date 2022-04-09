@@ -1,3 +1,4 @@
 .env
 node_modules
 config.json
+discord-bot-aws-key-pair.pem
