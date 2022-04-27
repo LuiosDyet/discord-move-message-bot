@@ -40,8 +40,12 @@ module.exports = {
             .fetch(messageId)
             .then(async (msg) => {
                 const guild = interaction.guild;
+                let channelId = '';
+                let channelName = '';
                 for (let channel of guild.channels.cache) {
-                    if (channel[1].name === threadName) {
+                    channelName = channel[1].name;
+                    if (channelName.indexOf(threadName) !== -1) {
+                        channelId = channel[1].id;
                         let files = [];
                         if (msg.attachments.size > 0) {
                             for (let attachment of msg.attachments.values()) {
@@ -49,7 +53,7 @@ module.exports = {
                             }
                         }
                         await channel[1].send({
-                            content: `Preguntado por <@${msg.author.id}>:
+                            content: `Mensaje de <@${msg.author.id}>:
                             ${msg.content}`,
                             files,
                         });
@@ -61,10 +65,14 @@ module.exports = {
                         } catch (error) {
                             console.error(error);
                         }
+                        break;
                     }
                 }
+                if (!channelId) {
+                    throw new Error('No se encontró el canal');
+                }
                 await interaction.reply({
-                    content: `<@${msg.author.id}> Tu mensaje fue movido a ${threadName}`,
+                    content: `<@${msg.author.id}> Tu [mensaje](https://discord.com/channels/${guild.id}/${channelId}/${msg.id}) fue movido a [${channelName}](https://discord.com/channels/${guild.id}/${channelId})`,
                 });
                 try {
                     setTimeout(async () => {

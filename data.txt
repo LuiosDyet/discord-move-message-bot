@@ -1,0 +1,7 @@
+
+
+https://discord.com/api/oauth2/authorize?client_id=963450198896562206&permissions=294205320256&scope=bot%20applications.commands
+
+ssh -i "discord-bot-aws-key-pair.pem" ubuntu@18.228.228.133
+
+955297766001750076
